@@ -1,0 +1,2191 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Greenhouse Desa Kebonagung</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: #f8fffe;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Colorful Background with Patterns */
+      body {
+        background: linear-gradient(
+          135deg,
+          #f0fdf4,
+          #dcfce7,
+          #bbf7d0,
+          #86efac,
+          #4ade80,
+          #22c55e,
+          #fde047,
+          #fb923c,
+          #60a5fa
+        );
+        background-size: 600% 600%;
+        animation: colorfulGradient 30s ease infinite;
+      }
+
+      @keyframes colorfulGradient {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      /* Background Pattern */
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(circle, #fde047 1px, transparent 1px),
+          radial-gradient(circle, #fb923c 1px, transparent 1px),
+          radial-gradient(circle, #60a5fa 1px, transparent 1px);
+        background-size: 100px 100px, 80px 80px, 120px 120px;
+        background-position: 0 0, 40px 40px, 80px 80px;
+        opacity: 0.1;
+        animation: patternMove 20s linear infinite;
+        z-index: -1;
+      }
+
+      @keyframes patternMove {
+        0% {
+          background-position: 0 0, 40px 40px, 80px 80px;
+        }
+        100% {
+          background-position: 100px 100px, 140px 140px, 180px 180px;
+        }
+      }
+
+      /* Floating Decorations
+      .floating-decor {
+        position: fixed;
+        font-size: 2rem;
+        opacity: 0.5;
+        animation: float 15s ease-in-out infinite;
+        z-index: -1;
+        pointer-events: none;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0) rotate(0deg);
+        }
+        25% {
+          transform: translateY(-30px) rotate(15deg);
+        }
+        50% {
+          transform: translateY(0) rotate(30deg);
+        }
+        75% {
+          transform: translateY(30px) rotate(15deg);
+        }
+        100% {
+          transform: translateY(0) rotate(0deg);
+        }
+      } */
+
+      /* Header Styles */
+      header {
+        background: linear-gradient(135deg, #16a34a, #22c55e, #4ade80, #86efac);
+        background-size: 400% 400%;
+        color: white;
+        padding: 1rem 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        animation: colorfulGradient 15s ease infinite;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .logo img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        /* border: 2px solid rgba(255, 255, 255, 0.3); */
+      }
+
+      .logo-text h1 {
+        font-size: 1.3rem;
+        font-weight: bold;
+      }
+
+      .logo-text p {
+        font-size: 0.9rem;
+        opacity: 0.9;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        padding: 8px 16px;
+        border-radius: 20px;
+        white-space: nowrap;
+        background: rgba(255, 255, 255, 0.205); /* <- warna dasar */
+        transition: background 0.3s ease, transform 0.3s ease;
+      }
+
+      /* 2. Saat kursor menyentuh (hover state) */
+      nav a:hover {
+        background: rgba(255, 255, 255, 0.5); /* <- warna lebih terang */
+        transform: translateY(-2px);
+      }
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(
+          135deg,
+          #f0fdf4 0%,
+          #dcfce7 50%,
+          #bbf7d0 100%
+        );
+        padding: 60px 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "🌱";
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 3rem;
+        opacity: 1;
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .hero::after {
+        content: "🍃";
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        font-size: 2rem;
+        opacity: 1;
+        animation: float 8s ease-in-out infinite reverse;
+      }
+
+      .hero-badge {
+        background: linear-gradient(to right, #16a34a, #22c55e);
+        color: white;
+        padding: 8px 20px;
+        border-radius: 25px;
+        display: inline-block;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        font-weight: 500;
+      }
+
+      .hero-author {
+        color: #16a34a;
+        padding: 6px 10px;
+        border-radius: 20px;
+        display: inline-block;
+        margin-bottom: 1rem;
+        font-size: 1rem;
+        font-weight: 400;
+        font-style: italic;
+        /* background: rgba(255, 255, 255, 0.7); */
+        backdrop-filter: blur(10px);
+        /* border: 1px solid rgba(34, 197, 94, 0.2); */
+        opacity: 0.9;
+      }
+
+      .hero h1 {
+        font-size: clamp(3rem, 8vw, 4rem);
+        font-weight: 900;
+        background: linear-gradient(135deg, #166534, #16a34a, #22c55e);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: -2px;
+      }
+
+      .hero h2 {
+        font-size: clamp(1.8rem, 5vw, 2.5rem);
+        color: #16a34a;
+        margin-bottom: 1rem;
+        font-style: italic;
+      }
+
+      .location-badge {
+        background: linear-gradient(#dcfce7, #bbf7d0);
+        color: #125e2f;
+        padding: 12px 25px;
+        border-radius: 30px;
+        display: inline-block;
+        margin-bottom: 1rem;
+        font-weight: 600;
+        font-size: clamp(1rem, 2.5vw, 1rem);
+      }
+
+      .hero p {
+        font-size: clamp(1.1rem, 3vw, 1.3rem);
+        color: #374151;
+        max-width: 700px;
+        margin: 0 auto 3rem;
+        line-height: 1.8;
+        padding: 0 1rem;
+      }
+
+      /* Plants Grid */
+      .plants-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 400px));
+        gap: 25px;
+        margin-top: 3rem;
+      }
+
+      .plant-card {
+        background: white;
+        border-radius: 20px;
+        padding: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        border: 1px solid rgba(34, 197, 94, 0.1);
+        cursor: pointer;
+      }
+
+      .plant-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(34, 197, 94, 0.2);
+      }
+
+      .plant-card img {
+        width: 100%;
+        height: 160px;
+        object-fit: cover;
+        border-radius: 15px;
+        margin-bottom: 8px;
+      }
+
+      .plant-card h3 {
+        font-size: 1.3rem;
+        color: #166534;
+        margin-bottom: 8px;
+        font-weight: 600;
+      }
+
+      .plant-card p {
+        color: #6b7280;
+        font-size: 0.95rem;
+      }
+
+      /* Section Styles */
+      .section {
+        padding: 60px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: clamp(2.2rem, 6vw, 3rem);
+        color: #269250;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+      }
+
+      .section-subtitle {
+        text-align: center;
+        font-size: clamp(1rem, 3vw, 1.2rem);
+        color: #6b7280;
+        max-width: 1500px;
+        margin: 0 auto 2rem;
+        padding: 0 1rem;
+      }
+
+      .divider {
+        width: 150px;
+        height: 4px;
+        background: linear-gradient(to right, #16a34a, #22c55e);
+        margin: 0 auto 1rem;
+        border-radius: 2px;
+      }
+
+      /* Cards Grid */
+      .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+      }
+
+      .card {
+        background: white;
+        padding: 30px 25px;
+        border-radius: 20px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        text-align: center;
+        border: 1px solid rgba(34, 197, 94, 0.1);
+      }
+
+      .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 40px rgba(34, 197, 94, 0.15);
+      }
+
+      .card-icon {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+        display: block;
+      }
+
+      .card h3 {
+        font-size: clamp(1.2rem, 3vw, 1.4rem);
+        color: #166534;
+        margin-bottom: 15px;
+        font-weight: 600;
+      }
+
+      .card p {
+        color: #6b7280;
+        line-height: 1.7;
+        font-size: clamp(0.9rem, 2.5vw, 1rem);
+      }
+
+      /* Background Variations */
+      .bg-green {
+        background: linear-gradient(135deg, #16a34a, #22c55e);
+        color: white;
+      }
+
+      .bg-gray {
+        background: #f9fafb;
+      }
+
+      .bg-pattern {
+        background-image: radial-gradient(
+            circle at 25% 25%,
+            rgba(34, 197, 94, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 75% 75%,
+            rgba(16, 163, 74, 0.1) 0%,
+            transparent 50%
+          );
+      }
+
+      /* Location Section */
+      .location-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 40px;
+        align-items: center;
+      }
+
+      .location-info {
+        background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+        padding: 30px;
+        border-radius: 20px;
+        border: 1px solid rgba(34, 197, 94, 0.2);
+      }
+
+      .location-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+
+      .location-item span {
+        font-size: 1.5rem;
+        flex-shrink: 0;
+      }
+
+      .location-item strong {
+        color: #166534;
+        display: block;
+        margin-bottom: 5px;
+        font-size: clamp(1rem, 2.5vw, 1.1rem);
+      }
+
+      .location-item p {
+        font-size: clamp(0.9rem, 2vw, 1rem);
+      }
+
+      .map-container {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        margin-top: 30px;
+      }
+
+      .map-header {
+        background: linear-gradient(to right, #16a34a, #22c55e);
+        color: white;
+        padding: 20px;
+        font-weight: 600;
+        font-size: clamp(1rem, 2.5vw, 1.1rem);
+      }
+
+      .map-container iframe {
+        width: 100%;
+        height: 300px;
+        border: none;
+      }
+
+      /* Buttons */
+      .btn {
+        background: linear-gradient(135deg, #16a34a, #22c55e);
+        color: white;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        margin: 10px 5px;
+        font-size: clamp(0.9rem, 2vw, 1rem);
+      }
+
+      .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(34, 197, 94, 0.3);
+      }
+
+      .btn-outline {
+        background: transparent;
+        color: #16a34a;
+        border: 2px solid #16a34a;
+      }
+
+      .btn-outline:hover {
+        background: #16a34a;
+        color: white;
+      }
+
+      /* Modal Styles */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(5px);
+      }
+
+      .modal-content {
+        background-color: white;
+        margin: 5% auto;
+        padding: 0;
+        border-radius: 20px;
+        width: 90%;
+        max-width: 600px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        animation: modalSlideIn 0.3s ease-out;
+      }
+
+      @keyframes modalSlideIn {
+        from {
+          opacity: 0;
+          transform: translateY(-50px) scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      .modal-header {
+        background: linear-gradient(135deg, #16a34a, #22c55e);
+        color: white;
+        padding: 20px 30px;
+        border-radius: 20px 20px 0 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .modal-header h2 {
+        margin: 0;
+        font-size: clamp(1.3rem, 3vw, 1.5rem);
+        font-weight: 600;
+      }
+
+      .modal-close {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 2rem;
+        cursor: pointer;
+        padding: 0;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+      }
+
+      .modal-close:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: rotate(90deg);
+      }
+
+      .modal-body {
+        padding: 30px;
+      }
+
+      .modal-body img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 15px;
+        margin-bottom: 20px;
+      }
+
+      .modal-body h3 {
+        color: #166534;
+        margin-bottom: 15px;
+        font-size: clamp(1.2rem, 3vw, 1.3rem);
+      }
+
+      .modal-body p {
+        color: #6b7280;
+        line-height: 1.7;
+        font-size: clamp(0.9rem, 2.5vw, 1rem);
+      }
+
+      .modal-footer {
+        padding: 20px 30px;
+        border-top: 1px solid #e5e7eb;
+        text-align: right;
+      }
+
+      .modal-btn {
+        background: linear-gradient(135deg, #16a34a, #22c55e);
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .modal-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(34, 197, 94, 0.3);
+      }
+
+      /* Footer */
+      footer {
+        background: linear-gradient(135deg, #1f2937, #374151);
+        color: white;
+        padding: 40px 0 20px;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-bottom: 30px;
+      }
+
+      .footer-section h3 {
+        color: #22c55e;
+        margin-bottom: 15px;
+        font-size: clamp(1.1rem, 3vw, 1.3rem);
+      }
+
+      .footer-section p {
+        color: #d1d5db;
+        line-height: 1.7;
+        font-size: clamp(0.9rem, 2vw, 1rem);
+      }
+
+      .footer-bottom {
+        border-top: 1px solid #4b5563;
+        padding-top: 20px;
+        text-align: center;
+        color: #9ca3af;
+        font-size: clamp(0.8rem, 2vw, 0.9rem);
+      }
+
+      /* Responsive Design */
+      @media (min-width: 768px) {
+        .header-content {
+          flex-wrap: nowrap;
+        }
+
+        .hero {
+          padding: 80px 0;
+        }
+
+        .section {
+          padding: 80px 0;
+        }
+
+        .location-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .plants-grid {
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .cards-grid {
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        }
+
+        .card {
+          padding: 40px 30px;
+        }
+
+        .location-info {
+          padding: 40px;
+        }
+      }
+
+      @media (max-width: 1000px) {
+        .container {
+          padding: 0 15px;
+        }
+
+        .header-content {
+          flex-direction: column;
+          gap: 15px;
+          text-align: center;
+        }
+
+        nav ul {
+          justify-content: center;
+          gap: 10px;
+        }
+
+        nav a {
+          padding: 6px 12px;
+          font-size: 0.9rem;
+        }
+
+        .plants-grid {
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 20px;
+        }
+
+        .cards-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+
+        .modal-content {
+          width: 95%;
+          margin: 10% auto;
+        }
+
+        .modal-header,
+        .modal-body,
+        .modal-footer {
+          padding: 20px;
+        }
+
+        .modal-body img {
+          height: 200px;
+        }
+
+        .map-container iframe {
+          height: 250px;
+        }
+      }
+
+      /* Documentation Carousel Styles */
+      .documentation-carousel {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        margin: 2rem 0;
+      }
+
+      /* Cards Grid - Horizontal Scroll */
+      #documentation .cards-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        gap: 25px;
+        padding: 20px 60px; /* Padding untuk memberi ruang arrow */
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE dan Edge */
+      }
+
+      #documentation .cards-grid::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
+      }
+
+      /* Card dalam carousel */
+      #documentation .card {
+        flex: 0 0 280px; /* Fixed width, tidak shrink */
+        min-width: 280px;
+        background: white;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 0 8px 25px rgba(255, 255, 255, 0.15);
+        transition: all 0.3s ease;
+        text-align: center;
+        cursor: pointer;
+      }
+
+      #documentation .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 40px rgba(255, 255, 255, 0.25);
+      }
+
+      /* Arrow Buttons */
+      .arrow-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.9);
+        border: none;
+        color: #16a34a;
+        font-size: 2rem;
+        font-weight: bold;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        border-radius: 50%;
+        z-index: 10;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .arrow-btn:hover {
+        background: white;
+        color: #064e3b;
+        transform: translateY(-50%) scale(1.1);
+        box-shadow: 0 6px 20px rgba(22, 163, 74, 0.3);
+      }
+
+      .arrow-left {
+        left: 10px;
+      }
+
+      .arrow-right {
+        right: 10px;
+      }
+
+      /* Gallery Modal Styles */
+      .gallery-modal-content {
+        background-color: #fefefe;
+        margin: 2% auto;
+        padding: 0;
+        border-radius: 15px;
+        width: 95%;
+        max-width: 1200px;
+        height: 90vh;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      .gallery-modal-header {
+        background: linear-gradient(135deg, #16a34a, #22c55e);
+        color: white;
+        padding: 20px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-shrink: 0;
+      }
+
+      .gallery-modal-header h2 {
+        margin: 0;
+        font-size: 1.7rem;
+      }
+
+      .gallery-modal-body {
+        flex: 1;
+        padding: 20px;
+        overflow-y: auto;
+        background: #f8f9fa;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+        padding: 10px;
+      }
+
+      .gallery-item {
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        background: white;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .gallery-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.05);
+      }
+
+      .gallery-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+        color: white;
+        padding: 20px 15px 15px;
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+      }
+
+      .gallery-item:hover .gallery-overlay {
+        transform: translateY(0);
+      }
+
+      .gallery-overlay h4 {
+        margin: 0 0 5px 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+
+      .gallery-overlay p {
+        margin: 0;
+        font-size: 0.9rem;
+        opacity: 0.9;
+      }
+
+      /* Full Image Modal */
+      .full-image-modal-content {
+        position: relative;
+        max-width: 90%;
+        max-height: 90%;
+        margin: 2.5% auto;
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      }
+
+      .full-image-modal-content img {
+        width: 100%;
+        max-height: 80vh;
+        object-fit: contain;
+        display: block;
+      }
+
+      .full-image-caption {
+        padding: 20px;
+        text-align: center;
+        background: white;
+      }
+
+      .full-image-caption h3 {
+        margin: 0;
+        color: #166534;
+        font-size: 1.3rem;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .gallery-modal-content {
+          width: 98%;
+          height: 95vh;
+          margin: 1% auto;
+        }
+
+        .gallery-grid {
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+          gap: 15px;
+          padding: 5px;
+        }
+
+        .gallery-modal-header {
+          padding: 15px 20px;
+        }
+
+        .gallery-modal-header h2 {
+          font-size: 1.4rem;
+        }
+
+        .gallery-overlay {
+          transform: translateY(0);
+          background: rgba(0, 0, 0, 0.7);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .gallery-grid {
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        }
+
+        .gallery-item img {
+          height: 150px;
+        }
+      }
+
+      /* Responsive untuk mobile */
+      @media (max-width: 768px) {
+        #documentation .cards-grid {
+          padding: 20px 50px;
+        }
+
+        #documentation .card {
+          flex: 0 0 250px;
+          min-width: 250px;
+        }
+
+        .arrow-btn {
+          width: 40px;
+          height: 40px;
+          font-size: 1.5rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        #documentation .cards-grid {
+          padding: 20px 45px;
+        }
+
+        #documentation .card {
+          flex: 0 0 220px;
+          min-width: 220px;
+          padding: 15px;
+        }
+
+        .arrow-btn {
+          width: 35px;
+          height: 35px;
+          font-size: 1.3rem;
+        }
+
+        .arrow-left {
+          left: 5px;
+        }
+
+        .arrow-right {
+          right: 5px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero-badge {
+          font-size: 2rem;
+          padding: 6px 16px;
+        }
+
+        .location-badge {
+          font-size: 0.9rem;
+          padding: 10px 20px;
+        }
+
+        .btn {
+          padding: 10px 20px;
+          font-size: 0.9rem;
+        }
+
+        .plant-card,
+        .card {
+          padding: 5px;
+        }
+
+        .location-info {
+          padding: 25px;
+        }
+      }
+
+      /* Touch Device Optimizations */
+      @media (hover: none) and (pointer: coarse) {
+        .plant-card:hover,
+        .card:hover,
+        .btn:hover {
+          transform: none;
+        }
+
+        .plant-card:active,
+        .card:active {
+          transform: scale(0.98);
+        }
+
+        .btn:active {
+          transform: scale(0.95);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Floating Decorations -->
+    <!-- <div class="floating-decor" style="top: 10%; left: 5%">🌸</div>
+    <div class="floating-decor" style="top: 20%; right: 10%">🌺</div>
+    <div class="floating-decor" style="bottom: 30%; left: 8%">🌻</div>
+    <div class="floating-decor" style="bottom: 15%; right: 5%">🌷</div>
+    <div class="floating-decor" style="top: 60%; left: 15%">🌼</div>
+    <div class="floating-decor" style="top: 40%; right: 20%">🌹</div> -->
+
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">
+            <img
+              src="./images/logo_undip.png"
+              alt="Logo UNDIP"
+              onerror="this.src='https://via.placeholder.com/50x50/22c55e/ffffff?text=U'"
+            />
+            <div class="logo-text">
+              <h1>Universitas Diponegoro</h1>
+              <p>KKNT IDBU 76 Kebonagung</p>
+            </div>
+          </div>
+          <nav>
+            <ul>
+              <!-- <li><a href="#about">Tentang</a></li>
+              <li><a href="#objectives">Tujuan</a></li>
+              <li><a href="#benefits">Manfaat</a></li>
+              <li><a href="#plants">Tanaman</a></li>
+              <li><a href="#documentation">Dokumentasi</a></li>
+              <li><a href="#location">Lokasi</a></li> -->
+              <li><a href="index.html">Rumah Pembibitan</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-badge">
+          🌿 PROGRAM MULTIDISIPLIN 1 KKN UNDIP 2025 🌿
+        </div>
+        <br />
+        <div class="hero-author">
+          by: Clara Zita Nabilla - Informatika - 2022
+        </div>
+        <h1>Greenhouse Terintegrasi</h1>
+        <div class="location-badge">
+          Ds. Kebonagung, Kec. Tegowanu, Kab. Grobogan
+        </div>
+        <p>
+          ✨ <strong>Inovasi Pertanian Modern</strong> untuk meningkatkan
+          produktivitas dan kesejahteraan masyarakat desa melalui greenhouse
+          berkelanjutan ✨
+        </p>
+        <div class="plants-grid" id="plants">
+          <div class="plant-card">
+            <img src="./images/bayam.jpg" alt="Bayam" />
+            <h3>Bayam</h3>
+            <p>Kaya zat besi dan vitamin</p>
+          </div>
+          <div class="plant-card">
+            <img src="./images/kangkung.jpg" alt="Kangkung" />
+            <h3>Kangkung</h3>
+            <p>Cepat tumbuh dan mudah dirawat</p>
+          </div>
+          <div class="plant-card">
+            <img src="./images/serai.jpg" alt="Serai" />
+            <h3>Serai</h3>
+            <p>Aromatik dan pengusir hama</p>
+          </div>
+          <div class="plant-card">
+            <img src="./images/jahe.jpg" alt="Jahe" />
+            <h3>Jahe</h3>
+            <p>Obat herbal alami</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+      <div class="container">
+        <h2 class="section-title">Tentang Greenhouse</h2>
+        <div class="divider"></div>
+        <p class="section-subtitle">
+          Teknologi pertanian modern untuk masa depan yang berkelanjutan
+        </p>
+
+        <div class="location-grid">
+          <div>
+            <div class="location-info">
+              <p
+                style="margin-bottom: 25px; font-size: 1.1rem; line-height: 1.8"
+              >
+                Greenhouse atau rumah kaca adalah suatu bangunan atau struktur
+                yang dirancang dengan dinding dan atap transparan (biasanya dari
+                kaca atau plastik) untuk menanam tanaman dalam kondisi
+                lingkungan yang terkendali.
+              </p>
+              <p style="font-size: 1.1rem; line-height: 1.8">
+                Greenhouse memanfaatkan panas dari sinar matahari untuk
+                menciptakan iklim mikro yang mendukung pertumbuhan tanaman,
+                terutama di luar musim atau di daerah dengan iklim ekstrem.
+              </p>
+            </div>
+          </div>
+          <div style="text-align: center">
+            <div
+              style="
+                background: linear-gradient(135deg, #16a34a, #22c55e);
+                padding: 50px;
+                border-radius: 20px;
+                color: white;
+                box-shadow: 0 15px 40px rgba(34, 197, 94, 0.3);
+              "
+            >
+              <div style="font-size: 5rem; margin-bottom: 20px">🏠</div>
+              <h3 style="font-size: 1.8rem; margin-bottom: 15px">
+                Teknologi Modern
+              </h3>
+              <p style="font-size: 1.1rem; opacity: 1">
+                Pertanian berkelanjutan untuk masa depan
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Objectives Section -->
+    <section id="objectives" class="section bg-gray bg-pattern">
+      <div class="container">
+        <h2 class="section-title">Tujuan Greenhouse</h2>
+        <div class="divider"></div>
+        <p class="section-subtitle">
+          Greenhouse dirancang dengan tujuan khusus untuk menciptakan lingkungan
+          pertanian yang optimal
+        </p>
+
+        <div class="cards-grid">
+          <div class="card">
+            <span class="card-icon">🌡️</span>
+            <h3>Kontrol Iklim Mikro</h3>
+            <p>
+              Mengendalikan iklim mikro (suhu, kelembaban, intensitas cahaya)
+              agar sesuai dengan kebutuhan tanaman untuk pertumbuhan optimal.
+            </p>
+          </div>
+          <div class="card">
+            <span class="card-icon">🛡️</span>
+            <h3>Perlindungan Cuaca</h3>
+            <p>
+              Melindungi tanaman dari gangguan cuaca ekstrem seperti hujan
+              lebat, angin kencang, atau suhu dingin yang dapat merusak tanaman.
+            </p>
+          </div>
+          <div class="card">
+            <span class="card-icon">📅</span>
+            <h3>Budidaya Sepanjang Tahun</h3>
+            <p>
+              Memperpanjang masa tanam atau memungkinkan budidaya sepanjang
+              tahun tanpa tergantung pada musim tertentu.
+            </p>
+          </div>
+          <div class="card">
+            <span class="card-icon">📈</span>
+            <h3>Peningkatan Produktivitas</h3>
+            <p>
+              Meningkatkan produktivitas dan kualitas tanaman melalui kondisi
+              lingkungan yang terkontrol dan optimal.
+            </p>
+          </div>
+          <div class="card">
+            <span class="card-icon">🦠</span>
+            <h3>Pengendalian Hama</h3>
+            <p>
+              Mengurangi risiko serangan hama dan penyakit karena lingkungan
+              yang lebih tertutup dan terkontrol dengan baik.
+            </p>
+          </div>
+          <div class="card">
+            <span class="card-icon">🎯</span>
+            <h3>Efisiensi Sumber Daya</h3>
+            <p>
+              Mengoptimalkan penggunaan air, nutrisi, dan energi untuk mencapai
+              hasil panen yang maksimal dengan input minimal.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="section">
+      <div class="container">
+        <h2 class="section-title">Manfaat Greenhouse</h2>
+        <div class="divider"></div>
+        <p class="section-subtitle">
+          Greenhouse memberikan berbagai keuntungan untuk pertanian modern dan
+          berkelanjutan
+        </p>
+
+        <div class="cards-grid">
+          <div class="card">
+            <span class="card-icon">📈</span>
+            <h3>Produktivitas Tinggi</h3>
+            <p>
+              Tanaman dapat tumbuh lebih cepat dan menghasilkan panen yang lebih
+              banyak dengan kualitas yang konsisten.
+            </p>
+          </div>
+          <div class="card">
+            <span class="card-icon">🌱</span>
+            <h3>Penanaman Sepanjang Tahun</h3>
+            <p>
+              Tidak tergantung musim, cocok untuk produksi yang terus-menerus
+              dan stabil sepanjang tahun.
+            </p>
+          </div>
+          <div class="card">
+            <span class="card-icon">🛡️</span>
+            <h3>Ramah Lingkungan</h3>
+            <p>
+              Pengurangan penggunaan pestisida karena lingkungan lebih tertutup
+              dan hama lebih mudah dikendalikan.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Documentation Gallery Section -->
+    <section id="documentation" class="section bg-gray bg-pattern">
+      <div class="container">
+        <h2 class="section-title">Dokumentasi Greenhouse</h2>
+        <div class="divider"></div>
+        <p class="section-subtitle">
+          📸 Lihat perkembangan dan aktivitas program greenhouse Desa Kebonagung
+          📸
+        </p>
+        <!-- Carousel Container dengan Arrow Navigation -->
+        <div class="documentation-carousel">
+          <!-- Left Arrow -->
+          <button
+            class="arrow-btn arrow-left"
+            onclick="scrollDocumentationLeft()"
+          >
+            &#8249;
+          </button>
+
+          <!-- Right Arrow -->
+          <button
+            class="arrow-btn arrow-right"
+            onclick="scrollDocumentationRight()"
+          >
+            &#8250;
+          </button>
+
+          <!-- Cards Grid (sekarang horizontal scroll) -->
+          <div class="cards-grid" id="documentation-cards">
+            <div
+              class="card"
+              onclick="showImageDetail('Mahasiswa KKN UNDIP Kelompok 2', 'Mahasiswa KKN IDBU 76 Kelompok 2')"
+            >
+              <img
+                src="./images/mahasiswa_kkn.jpeg"
+                style="
+                  width: 100%;
+                  height: 200px;
+                  object-fit: cover;
+                  border-radius: 15px;
+                  margin-bottom: 15px;
+                  cursor: pointer;
+                "
+              />
+              <h3 style="color: #166534">Mahasiswa KKN Kelompok 2</h3>
+            </div>
+
+            <div
+              class="card"
+              onclick="showImageDetail('Persiapan Awal Pembersihan Lahan', 'Kegiatan persiapan awal pembersihan lahan yang dilakukan oleh mahasiswa KKN sebagai tahap awal pembangunan greenhouse')"
+            >
+              <img
+                src="./images/pembersihan_lahan2.jpeg"
+                style="
+                  width: 100%;
+                  height: 200px;
+                  object-fit: cover;
+                  border-radius: 15px;
+                  margin-bottom: 15px;
+                  cursor: pointer;
+                "
+              />
+              <h3 style="color: #166534">Persiapan Awal Pembersihan Lahan</h3>
+            </div>
+
+            <div
+              class="card"
+              onclick="showImageDetail('Pembersihan Lahan', 'Kegiatan lanjutan pembersihan lahan oleh mahasiswa KKN sebelum pembangunan greenhouse dimulai')"
+            >
+              <img
+                src="./images/pembersihan_lahan.jpeg"
+                alt="Pembersihan Lahan"
+                style="
+                  width: 100%;
+                  height: 200px;
+                  object-fit: cover;
+                  border-radius: 15px;
+                  margin-bottom: 15px;
+                  cursor: pointer;
+                "
+              />
+              <h3 style="color: #166534">Pembersihan Lahan</h3>
+            </div>
+
+            <div
+              class="card"
+              onclick="showImageDetail('Pengerukan Lahan', 'Kegiatan pengerukan tanah sebagai tahap persiapan pembuatan pondasi greenhouse')"
+            >
+              <img
+                src="./images/pengerukan_lahan.jpeg"
+                alt="Pengerukan Lahan"
+                style="
+                  width: 100%;
+                  height: 200px;
+                  object-fit: cover;
+                  border-radius: 15px;
+                  margin-bottom: 15px;
+                  cursor: pointer;
+                "
+              />
+              <h3 style="color: #166534">Pengerukan Lahan</h3>
+            </div>
+
+            <div
+              class="card"
+              onclick="showImageDetail('Hasil Pengerukan Lahan', 'Lahan seluas 6 x 6 meter yang telah diratakan dan siap untuk tahap pembangunan greenhouse')"
+            >
+              <img
+                src="./images/hasil_pengerukan.jpeg"
+                alt="Hasil Pengerukan Lahan"
+                style="
+                  width: 100%;
+                  height: 200px;
+                  object-fit: cover;
+                  border-radius: 15px;
+                  margin-bottom: 15px;
+                  cursor: pointer;
+                "
+              />
+              <h3 style="color: #166534">Hasil Pengerukan Lahan</h3>
+            </div>
+
+            <div
+              class="card"
+              onclick="showImageDetail('Penyiraman Lahan', 'Kegiatan penyiraman lahan untuk menjaga kelembaban tanah sebelum pembangunan greenhouse dimulai')"
+            >
+              <img
+                src="./images/penyiraman_lahan.jpeg"
+                alt="Penyiraman Lahan"
+                style="
+                  width: 100%;
+                  height: 200px;
+                  object-fit: cover;
+                  border-radius: 15px;
+                  margin-bottom: 15px;
+                  cursor: pointer;
+                "
+              />
+              <h3 style="color: #166534">Penyiraman Lahan</h3>
+            </div>
+
+            <div
+              class="card"
+              onclick="showImageDetail('Pemadatan Lahan', 'Proses pemadatan tanah untuk memastikan kestabilan lahan sebelum pembangunan')"
+            >
+              <img
+                src="./images/pemadatan_lahan.jpeg"
+                alt="Pemadatan Lahan"
+                style="
+                  width: 100%;
+                  height: 200px;
+                  object-fit: cover;
+                  border-radius: 15px;
+                  margin-bottom: 15px;
+                  cursor: pointer;
+                "
+              />
+              <h3 style="color: #166534">Pemadatan Lahan</h3>
+            </div>
+
+            <div
+              class="card"
+              onclick="showImageDetail('Pembahasan Awal Sebelum Pembangunan', 'Diskusi dan perencanaan awal sebelum memulai pembangunan greenhouse')"
+            >
+              <img
+                src="./images/pembahasan_awal.jpeg"
+                alt="Pembahasan Awal Sebelum Pembangunan"
+                style="
+                  width: 100%;
+                  height: 200px;
+                  object-fit: cover;
+                  border-radius: 15px;
+                  margin-bottom: 15px;
+                  cursor: pointer;
+                "
+              />
+              <h3 style="color: #166534">
+                Pembahasan Awal Sebelum Pembangunan
+              </h3>
+            </div>
+
+            <div
+              class="card"
+              onclick="showImageDetail('Pembuatan Kerangka', 'Proses pembuatan kerangka greenhouse menggunakan baja ringan')"
+            >
+              <img
+                src="./images/pembuatan_kerangka.jpeg"
+                alt="Pembuatan Kerangka"
+                style="
+                  width: 100%;
+                  height: 200px;
+                  object-fit: cover;
+                  border-radius: 15px;
+                  margin-bottom: 15px;
+                  cursor: pointer;
+                "
+              />
+              <h3 style="color: #166534">Pembuatan Kerangka</h3>
+            </div>
+
+            <div
+              class="card"
+              onclick="showImageDetail('Pembangunan Kerangka', 'Tahap pemasangan dan penyelesaian kerangka greenhouse')"
+            >
+              <img
+                src="./images/pembangunan_kerangka.JPG"
+                alt="Pembangunan Kerangka"
+                style="
+                  width: 100%;
+                  height: 200px;
+                  object-fit: cover;
+                  border-radius: 15px;
+                  margin-bottom: 15px;
+                  cursor: pointer;
+                "
+              />
+              <h3 style="color: #166534">Pembangunan Kerangka</h3>
+            </div>
+
+            <div
+              class="card"
+              onclick="showImageDetail('Pemasangan Bata Ringan', 'Proses pembangunan pondasi dan dinding greenhouse menggunakan bata ringan sebagai struktur dasar')"
+            >
+              <img
+                src="./images/pemasangan_bata_ringan.png"
+                alt="Pemasangan Bata Ringan"
+                style="
+                  width: 100%;
+                  height: 200px;
+                  object-fit: cover;
+                  border-radius: 15px;
+                  margin-bottom: 15px;
+                  cursor: pointer;
+                "
+              />
+              <h3 style="color: #166534">Pemasangan Bata Ringan</h3>
+            </div>
+
+            <div
+              class="card"
+              onclick="showImageDetail('Pemasangan Atap', 'Pemasangan atap greenhouse menggunakan plastik UV untuk melindungi tanaman dari hujan dan sinar matahari berlebih')"
+            >
+              <img
+                src="./images/pemasangan_atap.jpg"
+                alt="Pemasangan Atap"
+                style="
+                  width: 100%;
+                  height: 200px;
+                  object-fit: cover;
+                  border-radius: 15px;
+                  margin-bottom: 15px;
+                  cursor: pointer;
+                "
+              />
+              <h3 style="color: #166534">Pemasangan Atap</h3>
+            </div>
+
+            <div
+              class="card"
+              onclick="showImageDetail('Pemasangan Insectnet', 'Pemasangan insectnet di sekeliling greenhouse untuk mencegah masuknya hama dan menjaga kualitas tanaman')"
+            >
+              <img
+                src="./images/pemasangan_insecnet.jpg"
+                alt="Pemasangan Insectnet"
+                style="
+                  width: 100%;
+                  height: 200px;
+                  object-fit: cover;
+                  border-radius: 15px;
+                  margin-bottom: 15px;
+                  cursor: pointer;
+                "
+              />
+              <h3 style="color: #166534">Pemasangan Insectnet</h3>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem">
+          <button
+            class="btn"
+            style="background: white; color: #16a34a; border: 2px solid white"
+            onclick="showGallery()"
+          >
+            Lihat Lebih Banyak Foto
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Modal -->
+    <div id="galleryModal" class="modal">
+      <div class="gallery-modal-content">
+        <div class="gallery-modal-header">
+          <h2>📷 Galeri Foto Lengkap Greenhouse</h2>
+          <button class="modal-close" onclick="closeGalleryModal()">
+            &times;
+          </button>
+        </div>
+        <div class="gallery-modal-body">
+          <div class="gallery-grid">
+            <div
+              class="gallery-item"
+              onclick="showFullImage('./images/mahasiswa_kkn.jpeg', 'Mahasiswa KKN UNDIP Kelompok 2')"
+            >
+              <img src="./images/mahasiswa_kkn.jpeg" alt="Tim KKN" />
+              <div class="gallery-overlay">
+                <h4>Mahasiswa KKN UNDIP Kelompok 2</h4>
+                <p>Mahasiswa KKN UNDIP Kelompok 2</p>
+              </div>
+            </div>
+
+            <div
+              class="gallery-item"
+              onclick="showFullImage('./images/pembersihan_lahan2.jpeg', 'Persiapan Pembersihan Lahan')"
+            >
+              <img
+                src="./images/pembersihan_lahan2.jpeg"
+                alt="Persiapan Pembersihan Lahan"
+              />
+              <div class="gallery-overlay">
+                <h4>Kegiatan Persiapan Pembersihan Lahan</h4>
+                <p>Persiapan awal pembersihan lahan</p>
+              </div>
+            </div>
+
+            <div
+              class="gallery-item"
+              onclick="showFullImage('./images/pembersihan_lahan.jpeg', 'Pembersihan Lahan Greenhouse')"
+            >
+              <img
+                src="./images/pembersihan_lahan.jpeg"
+                alt="Pembersihan Lahan"
+              />
+              <div class="gallery-overlay">
+                <h4>Tahap Pembersihan Lahan</h4>
+                <p>Pembersihan lahan</p>
+              </div>
+            </div>
+
+            <div
+              class="gallery-item"
+              onclick="showFullImage('./images/pengerukan_lahan.jpeg', 'Pengerukan Lahan Greenhouse')"
+            >
+              <img
+                src="./images/pengerukan_lahan.jpeg"
+                alt="Pengerukan Lahan Greenhouse"
+              />
+              <div class="gallery-overlay">
+                <h4>Proses Pengerukan Lahan Greenhouse</h4>
+                <p>Pengerukan lahan greenhouse</p>
+              </div>
+            </div>
+
+            <div
+              class="gallery-item"
+              onclick="showFullImage('./images/hasil_pengerukan.jpeg', 'Hasil Pengerukan Lahan Greenhouse')"
+            >
+              <img
+                src="./images/hasil_pengerukan.jpeg"
+                alt="Pengerukan Lahan Greenhouse"
+              />
+              <div class="gallery-overlay">
+                <h4>Hasil Pengerukan Lahan Greenhouse</h4>
+                <p>Lahan greenhouse ukuran 6 x 6 meter</p>
+              </div>
+            </div>
+
+            <div
+              class="gallery-item"
+              onclick="showFullImage('./images/penyiraman_lahan.jpeg', 'Penyiraman Lahan Greenhouse')"
+            >
+              <img
+                src="./images/penyiraman_lahan.jpeg"
+                alt="Penyiraman Lahan Greenhouse"
+              />
+              <div class="gallery-overlay">
+                <h4>Kegiatan Penyiraman Lahan Greenhouse</h4>
+                <p>Penyiraman lahan greenhouse</p>
+              </div>
+            </div>
+
+            <div
+              class="gallery-item"
+              onclick="showFullImage('./images/pemadatan_lahan.jpeg', 'Pemadatan Lahan Greenhouse')"
+            >
+              <img
+                src="./images/pemadatan_lahan.jpeg"
+                alt="Pemadatan Lahan Greenhouse"
+              />
+              <div class="gallery-overlay">
+                <h4>Kegiatan Pemadatan Lahan Greenhouse</h4>
+                <p>Pemadatan lahan greenhouse</p>
+              </div>
+            </div>
+
+            <div
+              class="gallery-item"
+              onclick="showFullImage('./images/pembahasan_awal.jpeg', 'Pembahasan Awal Pembangunan Greenhouse')"
+            >
+              <img
+                src="./images/pembahasan_awal.jpeg"
+                alt="Pembahasan Awal Pembangunan Greenhouse"
+              />
+              <div class="gallery-overlay">
+                <h4>Pembahasan Awal Pembangunan Greenhouse</h4>
+                <p>Pembahasan awal pembangunan greenhouse</p>
+              </div>
+            </div>
+
+            <div
+              class="gallery-item"
+              onclick="showFullImage('./images/pembuatan_kerangka.jpeg', 'Pembuatan Kerangka Greenhouse')"
+            >
+              <img
+                src="./images/pembuatan_kerangka.jpeg"
+                alt="Pembuatan Kerangka Greenhouse"
+              />
+              <div class="gallery-overlay">
+                <h4>Pembuatan Kerangka Greenhouse</h4>
+                <p>Kerangka greenhouse terbuat dari baja ringan</p>
+              </div>
+            </div>
+
+            <div
+              class="gallery-item"
+              onclick="showFullImage('./images/pembangunan_kerangka.jpg', 'Pembangunan Kerangka Greenhouse')"
+            >
+              <img
+                src="./images/pembangunan_kerangka.jpg"
+                alt="Pembangunan Kerangka Greenhouse"
+              />
+              <div class="gallery-overlay">
+                <h4>Pembangunan Kerangka Greenhouse</h4>
+                <p>Pembangunan kerangka greenhouse</p>
+              </div>
+            </div>
+
+            <div
+              class="gallery-item"
+              onclick="showFullImage('./images/pemasangan_bata_ringan.png', 'Pemasangan Bata Ringan Greenhouse')"
+            >
+              <img
+                src="./images/pemasangan_bata_ringan.png"
+                alt="Pemasangan Bata Ringan Greenhouse"
+              />
+              <div class="gallery-overlay">
+                <h4>Pemasangan Bata Ringan Greenhouse</h4>
+                <p>Pembangunan pondasi greenhouse dari bata ringan</p>
+              </div>
+            </div>
+
+            <div
+              class="gallery-item"
+              onclick="showFullImage('./images/pemasangan_atap.jpg', 'Pemasangan Atap Greenhouse')"
+            >
+              <img
+                src="./images/pemasangan_atap.jpg"
+                alt="Pemasangan Atap Greenhouse"
+              />
+              <div class="gallery-overlay">
+                <h4>Pemasangan Atap Greenhouse</h4>
+                <p>Pembuatan atap greenhouse dari plastik UV</p>
+              </div>
+            </div>
+
+            <div
+              class="gallery-item"
+              onclick="showFullImage('./images/pemasangan_insecnet.jpg', 'Pemasangan Insectnet Greenhouse')"
+            >
+              <img
+                src="./images/pemasangan_insecnet.jpg"
+                alt="Pemasangan Atap Greenhouse"
+              />
+              <div class="gallery-overlay">
+                <h4>Pemasangan Insectnet Greenhouse</h4>
+                <p>Pemasangan Insectnet greenhouse</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Full Image Modal -->
+    <div id="fullImageModal" class="modal">
+      <div class="full-image-modal-content">
+        <button class="modal-close" onclick="closeFullImageModal()">
+          &times;
+        </button>
+        <img id="fullImage" src="" alt="" />
+        <div class="full-image-caption">
+          <h3 id="fullImageTitle"></h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- Location Section -->
+    <section id="location" class="section">
+      <div class="container">
+        <h2 class="section-title">Lokasi Greenhouse</h2>
+        <div class="divider"></div>
+        <p class="section-subtitle">
+          Temukan lokasi greenhouse kami di Desa Kebonagung, Kabupaten Grobogan,
+          Purwodadi
+        </p>
+
+        <div class="location-grid">
+          <div>
+            <div class="location-info">
+              <h3
+                style="margin-bottom: 25px; color: #166534; font-size: 1.5rem"
+              >
+                📍 Alamat Lengkap
+              </h3>
+
+              <div class="location-item">
+                <span>🏘️</span>
+                <div>
+                  <strong>Desa Kebonagung</strong>
+                  <p>Kecamatan Tegowanu</p>
+                </div>
+              </div>
+
+              <div class="location-item">
+                <span>🗺️</span>
+                <div>
+                  <strong>Kabupaten Grobogan</strong>
+                  <p>Provinsi Jawa Tengah</p>
+                </div>
+              </div>
+
+              <div class="location-item">
+                <span>⏰</span>
+                <div>
+                  <strong>Jam Kunjungan</strong>
+                  <p>Senin - Sabtu: 08:00 - 16:00 WIB</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="map-container">
+              <div class="map-header">🗺️ Peta Lokasi Greenhouse</div>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126459.5234567890!2d110.9876543!3d-7.1234567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708b4c8f123456%3A0x1234567890abcdef!2sKebonagung%2C%20Purwodadi%2C%20Grobogan%20Regency%2C%20Central%20Java!5e0!3m2!1sen!2sid!4v1234567890123!5m2!1sen!2sid"
+                allowfullscreen=""
+                loading="lazy"
+              >
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-section">
+            <h3>Greenhouse Kebonagung</h3>
+            <p>
+              Program multidisiplin KKN Universitas Diponegoro untuk
+              pengembangan pertanian berkelanjutan di Desa Kebonagung.
+            </p>
+          </div>
+          <div class="footer-section">
+            <h3>Lokasi</h3>
+            <p>
+              Desa Kebonagung<br />
+              Kecamatan Tegowanu<br />
+              Kabupaten Grobogan, Jawa Tengah
+            </p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 - Clara Zita Nabilla - Universitas Diponegoro.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Modal Structure -->
+    <div id="plantModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 id="modalTitle">Detail Tanaman</h2>
+          <button class="modal-close" onclick="closeModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <img id="modalImage" src="" alt="" style="display: none" />
+          <h3 id="modalSubtitle"></h3>
+          <p id="modalDescription"></p>
+        </div>
+        <div class="modal-footer">
+          <button class="modal-btn" onclick="closeModal()">Tutup</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Modal Functions
+      function openModal(title, subtitle, description, imageSrc = null) {
+        const modal = document.getElementById("plantModal");
+        const modalTitle = document.getElementById("modalTitle");
+        const modalSubtitle = document.getElementById("modalSubtitle");
+        const modalDescription = document.getElementById("modalDescription");
+        const modalImage = document.getElementById("modalImage");
+
+        modalTitle.textContent = title;
+        modalSubtitle.textContent = subtitle;
+        modalDescription.textContent = description;
+
+        if (imageSrc) {
+          modalImage.src = imageSrc;
+          modalImage.style.display = "block";
+        } else {
+          modalImage.style.display = "none";
+        }
+
+        modal.style.display = "block";
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        const modal = document.getElementById("plantModal");
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+      }
+
+      // Close modal when clicking outside
+      window.onclick = function (event) {
+        const modal = document.getElementById("plantModal");
+        if (event.target === modal) {
+          closeModal();
+        }
+      };
+
+      // Close modal with ESC key
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          closeModal();
+        }
+      });
+
+      // Plant card interactions
+      document.querySelectorAll(".plant-card").forEach((card) => {
+        card.addEventListener("click", function () {
+          const plantName = this.querySelector("h3").textContent;
+          const plantDesc = this.querySelector("p").textContent;
+
+          const descriptions = {
+            Bayam: `
+                  Kaya zat besi, vitamin A, dan folat.
+                  Cara tanam: Tebar benih di polybag berisi media tanam.
+                  Siram rutin dan letakkan di tempat terang.
+                  Masa panen: 30–40 hari setelah tanam.
+                  `,
+
+            Kangkung: `
+                  Mengandung vitamin A, C, dan zat besi.
+                  Cara tanam: Sebar benih di polybag.
+                  Siram dua kali sehari.
+                  Masa panen: 21–30 hari, dapat dipanen berulang.
+                  `,
+
+            Serai: `
+                  Berfungsi sebagai bumbu dan pengusir hama alami.
+                  Cara tanam: Tanam batang serai di polybag.
+                  Siram teratur.
+                  Masa panen: 4–6 bulan setelah tanam.
+                  `,
+
+            Jahe: `
+                  Bermanfaat untuk kesehatan.
+                  Cara tanam: Tanam rimpang jahe di polybag dengan media lembap.
+                  Jaga kelembapan.
+                  Masa panen: 8–10 bulan setelah tanam.
+                  `,
+          };
+
+          const fullDescription = descriptions[plantName] || plantDesc;
+          const imageSrc = this.querySelector("img").src;
+
+          openModal("Detail Tanaman", plantName, fullDescription, imageSrc);
+        });
+      });
+
+      // Documentation Carousel Navigation
+      function scrollDocumentationLeft() {
+        const cardsGrid = document.getElementById("documentation-cards");
+        const scrollAmount = 300; // Pixels to scroll
+        cardsGrid.scrollBy({
+          left: -scrollAmount,
+          behavior: "smooth",
+        });
+      }
+
+      function scrollDocumentationRight() {
+        const cardsGrid = document.getElementById("documentation-cards");
+        const scrollAmount = 300; // Pixels to scroll
+        cardsGrid.scrollBy({
+          left: scrollAmount,
+          behavior: "smooth",
+        });
+      }
+
+      // Auto-hide arrows when at start/end (optional enhancement)
+      function updateArrowVisibility() {
+        const cardsGrid = document.getElementById("documentation-cards");
+        const leftArrow = document.querySelector(".arrow-left");
+        const rightArrow = document.querySelector(".arrow-right");
+
+        if (cardsGrid) {
+          const isAtStart = cardsGrid.scrollLeft <= 0;
+          const isAtEnd =
+            cardsGrid.scrollLeft >=
+            cardsGrid.scrollWidth - cardsGrid.clientWidth;
+
+          leftArrow.style.opacity = isAtStart ? "0.5" : "1";
+          rightArrow.style.opacity = isAtEnd ? "0.5" : "1";
+        }
+      }
+
+      // Listen for scroll events to update arrow visibility
+      document.addEventListener("DOMContentLoaded", function () {
+        const cardsGrid = document.getElementById("documentation-cards");
+        if (cardsGrid) {
+          cardsGrid.addEventListener("scroll", updateArrowVisibility);
+          updateArrowVisibility(); // Initial check
+        }
+      });
+
+      // Touch/swipe support for mobile (optional enhancement)
+      let isDown = false;
+      let startX;
+      let scrollLeft;
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const cardsGrid = document.getElementById("documentation-cards");
+
+        if (cardsGrid) {
+          cardsGrid.addEventListener("mousedown", (e) => {
+            isDown = true;
+            startX = e.pageX - cardsGrid.offsetLeft;
+            scrollLeft = cardsGrid.scrollLeft;
+          });
+
+          cardsGrid.addEventListener("mouseleave", () => {
+            isDown = false;
+          });
+
+          cardsGrid.addEventListener("mouseup", () => {
+            isDown = false;
+          });
+
+          cardsGrid.addEventListener("mousemove", (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - cardsGrid.offsetLeft;
+            const walk = (x - startX) * 2;
+            cardsGrid.scrollLeft = scrollLeft - walk;
+          });
+        }
+      });
+
+      // Existing functions (keep these)
+      function showImageDetail(title, description) {
+        // Ambil gambar dari card yang diklik
+        const clickedCard = event.currentTarget;
+        const clickedImage = clickedCard.querySelector("img");
+        const imageSrc = clickedImage.src;
+
+        // Panggil openModal dengan parameter gambar
+        openModal("Dokumentasi Greenhouse", title, description, imageSrc);
+      }
+
+      function showGallery() {
+        alert(
+          "🖼️ Galeri Foto Lengkap\n\nFitur galeri foto lengkap akan segera hadir!\n\nSaat ini Anda dapat:\n• Mengklik setiap foto untuk melihat detail\n• Melihat dokumentasi pembangunan greenhouse\n• Melihat aktivitas penanaman dan perawatan\n• Melihat hasil panen dan pelatihan warga\n\n📱 Ikuti media sosial kami untuk update foto terbaru!"
+        );
+      }
+
+      // Smooth scrolling for navigation
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Enhanced hover effects for touch devices
+      if ("ontouchstart" in window) {
+        document.querySelectorAll(".plant-card, .card").forEach((element) => {
+          element.addEventListener("touchstart", function () {
+            this.style.transform = "scale(0.98)";
+          });
+
+          element.addEventListener("touchend", function () {
+            this.style.transform = "";
+          });
+        });
+      }
+
+      // Add loading animation
+      window.addEventListener("load", function () {
+        document.body.style.opacity = "0";
+        document.body.style.transition = "opacity 0.5s ease";
+
+        setTimeout(() => {
+          document.body.style.opacity = "1";
+        }, 100);
+      });
+
+      // Gallery Modal Functions
+      function showGallery() {
+        const modal = document.getElementById("galleryModal");
+        modal.style.display = "block";
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeGalleryModal() {
+        const modal = document.getElementById("galleryModal");
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+      }
+
+      function showFullImage(imageSrc, title) {
+        const modal = document.getElementById("fullImageModal");
+        const fullImage = document.getElementById("fullImage");
+        const fullImageTitle = document.getElementById("fullImageTitle");
+
+        fullImage.src = imageSrc;
+        fullImageTitle.textContent = title;
+        modal.style.display = "block";
+      }
+
+      function closeFullImageModal() {
+        const modal = document.getElementById("fullImageModal");
+        modal.style.display = "none";
+      }
+
+      // Update existing window.onclick function
+      window.onclick = function (event) {
+        const plantModal = document.getElementById("plantModal");
+        const galleryModal = document.getElementById("galleryModal");
+        const fullImageModal = document.getElementById("fullImageModal");
+
+        if (event.target === plantModal) {
+          closeModal();
+        } else if (event.target === galleryModal) {
+          closeGalleryModal();
+        } else if (event.target === fullImageModal) {
+          closeFullImageModal();
+        }
+      };
+
+      // Update ESC key handler
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          closeModal();
+          closeGalleryModal();
+          closeFullImageModal();
+        }
+      });
+    </script>
+  </body>
+</html>
