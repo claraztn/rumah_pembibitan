@@ -117,7 +117,7 @@
           #fed7aa 50%,
           #fecaca 100%
         );
-        padding: 80px 0;
+        padding: 60px 0;
         text-align: center;
         position: relative;
         overflow: hidden;
@@ -126,11 +126,11 @@
       .hero::before {
         content: "🌶️";
         position: absolute;
-        top: 20px;
+        top: 1px;
         left: 20px;
-        font-size: 3rem;
+        font-size: 2.5rem;
         opacity: 1;
-        animation: float 6s ease-in-out infinite;
+        animation: float 8s ease-in-out infinite;
       }
 
       .hero::after {
@@ -140,6 +140,27 @@
         right: 20px;
         font-size: 2rem;
         opacity: 1;
+        animation: float 8s ease-in-out infinite reverse;
+      }
+
+      .hero .decor {
+        position: absolute;
+        opacity: 1;
+        pointer-events: none;
+        user-select: none;
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .hero .decor.top-right {
+        top: 1px;
+        right: 20px;
+        font-size: 2.5rem;
+      }
+
+      .hero .decor.bottom-left {
+        bottom: 20px;
+        left: 20px;
+        font-size: 2rem;
         animation: float 8s ease-in-out infinite reverse;
       }
 
@@ -160,7 +181,7 @@
         border-radius: 25px;
         display: inline-block;
         margin-bottom: 1rem;
-        font-size: 1.2rem;
+        font-size: 1rem;
         font-weight: 500;
       }
 
@@ -169,9 +190,9 @@
         padding: 6px 10px;
         border-radius: 20px;
         display: inline-block;
-        margin-bottom: 1rem;
+        margin-bottom: 0.7rem;
         font-size: 1rem;
-        font-weight: 400;
+        font-weight: 500;
         font-style: italic;
         /* background: rgba(255, 255, 255, 0.7); */
         backdrop-filter: blur(10px);
@@ -180,13 +201,13 @@
       }
 
       .hero h1 {
-        font-size: 4rem;
+        font-size: clamp(5rem, 8vw, 4rem);
         font-weight: 900;
         background: linear-gradient(135deg, #7f1d1d, #dc2626, #ea580c);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
         text-transform: uppercase;
         letter-spacing: -2px;
       }
@@ -220,15 +241,18 @@
       /* Cabai Grid */
       .cabai-grid {
         display: grid;
+        justify-content: center;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 25px;
         margin-top: 3rem;
       }
 
       .cabai-card {
-        background: white;
+        max-width: 400px; /* batasi lebar maksimal */
+        margin: 0 auto;
+        background: rgb(255, 255, 255);
         border-radius: 20px;
-        padding: 25px;
+        padding: 15px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         transition: all 0.3s ease;
         border: 1px solid rgba(220, 38, 38, 0.1);
@@ -252,7 +276,7 @@
         font-size: 1.3rem;
         color: #7f1d1d;
         margin-bottom: 8px;
-        font-weight: 600;
+        font-weight: 200;
       }
 
       .cabai-card p {
@@ -292,8 +316,16 @@
       /* Cards Grid */
       .cards-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        grid-template-columns: repeat(4, 1fr); /* desktop 4 kolom */
         gap: 30px;
+        padding: 20px;
+      }
+
+      .cards-grids {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* desktop 4 kolom */
+        gap: 30px;
+        padding: 20px;
       }
 
       .card {
@@ -536,6 +568,57 @@
       }
 
       /* Responsive Design */
+      @media (max-width: 1000px) {
+        .container {
+          padding: 0 15px;
+        }
+
+        .header-content {
+          flex-direction: column;
+          gap: 15px;
+          text-align: center;
+        }
+
+        nav ul {
+          justify-content: center;
+          gap: 10px;
+        }
+
+        nav a {
+          padding: 6px 12px;
+          font-size: 0.9rem;
+        }
+
+        .cabai-grid {
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 20px;
+        }
+
+        .cards-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+
+        .modal-content {
+          width: 95%;
+          margin: 10% auto;
+        }
+
+        .modal-header,
+        .modal-body,
+        .modal-footer {
+          padding: 20px;
+        }
+
+        .modal-body img {
+          height: 200px;
+        }
+
+        .map-container iframe {
+          height: 250px;
+        }
+      }
+
       @media (max-width: 768px) {
         .hero h1 {
           font-size: 2.5rem;
@@ -587,6 +670,59 @@
         .modal-body img {
           height: 200px;
         }
+
+        .hero-badge {
+          font-size: 1rem; /* kecilkan font supaya muat */
+          padding: 6px 12px;
+          white-space: nowrap; /* supaya teks tetap 1 baris */
+          overflow-x: auto; /* jika terlalu panjang, bisa di-scroll horizontal */
+          display: inline-block; /* supaya lebarnya sesuai isi */
+          max-width: 100%; /* jangan lebih dari container */
+        }
+
+        .hero-author {
+          font-size: 0.9rem;
+          padding: 4px 10px;
+          white-space: normal; /* ini bisa wrap jika perlu */
+        }
+
+        .location-badge {
+          font-size: 0.8rem;
+          padding: 10px 20px;
+        }
+
+        .cabai-card img {
+          height: 120px; /* biar nggak terlalu tinggi di layar kecil */
+          padding: 1px; /* lebih rapat */
+        }
+
+        .cards-grid {
+          grid-template-columns: repeat(2, 1fr); /* 2 kolom di HP */
+          gap: 10px; /* jarak antar kartu lebih kecil di HP */
+          padding: 10px;
+        }
+
+        .cards-grids {
+          grid-template-columns: repeat(2, 1fr); /* 2 kolom di HP */
+          gap: 10px; /* jarak antar kartu lebih kecil di HP */
+          padding: 10px;
+        }
+
+        .card {
+          font-size: 0.9rem; /* sedikit kecil supaya muat */
+          padding: 8px;
+        }
+
+        .logo {
+          flex-direction: column;
+          align-items: center; /* biar tulisan dan gambar tengah */
+          gap: 8px; /* jarak antar elemen */
+        }
+
+        .logo img {
+          width: 60px; /* kamu bisa atur ulang ukuran kalau mau */
+          height: 60px;
+        }
       }
     </style>
   </head>
@@ -622,10 +758,10 @@
 
     <!-- Hero Section -->
     <section class="hero">
+      <span class="decor top-right">🌶️</span>
+      <span class="decor bottom-left">🌱</span>
       <div class="container">
-        <div class="hero-badge">
-          🌶️ PROGRAM MULTIDISIPLIN 2 KKN UNDIP 2025 🌶️
-        </div>
+        <div class="hero-badge">🌶️ PROGRAM MULTIDISIPLIN 2 🌶️</div>
         <br />
         <div class="hero-author">
           by: Clara Zita Nabilla - Informatika - 2022
@@ -640,7 +776,7 @@
           dan produktif 🌱
         </p>
         <div class="cabai-grid" id="jenis-cabai">
-          <div class="cabai-card">
+          <!-- <div class="cabai-card">
             <img
               src="./images/cabai_merah_keriting.jpg"
               alt="Cabai Merah Keriting"
@@ -655,7 +791,7 @@
             />
             <h3>Cabai Hijau Keriting</h3>
             <p>Cabai hijau besar dengan rasa segar dan pedas ringan</p>
-          </div>
+          </div> -->
           <div class="cabai-card">
             <img src="./images/cabai_rawit.jpg" alt="Cabai Rawit" />
             <h3>Cabai Rawit</h3>
@@ -668,7 +804,7 @@
     <!-- About Section -->
     <section id="about" class="section">
       <div class="container">
-        <h2 class="section-title">Tentang Rumah Pembibitan</h2>
+        <h2 class="section-title">Tentang Pembibitan Cabai</h2>
         <div class="divider"></div>
         <p class="section-subtitle">
           Teknologi pembibitan modern dengan sistem tray semai untuk
@@ -689,18 +825,27 @@
             <span class="card-icon">🌡️</span>
             <h3>Kontrol Lingkungan</h3>
             <p>
-              Rumah pembibitan dilengkapi dengan sistem kontrol suhu,
-              kelembaban, dan pencahayaan untuk menciptakan kondisi optimal bagi
-              pertumbuhan bibit cabai.
+              Pembibitan dilengkapi dengan sistem kontrol suhu, kelembaban, dan
+              pencahayaan untuk menciptakan kondisi optimal bagi pertumbuhan
+              bibit cabai.
             </p>
           </div>
           <div class="card">
-            <span class="card-icon">💧</span>
-            <h3>Irigasi Otomatis</h3>
+            <span class="card-icon">🧑‍🌾</span>
+            <h3>Perawatan Manual Terpadu</h3>
             <p>
-              Sistem penyiraman otomatis yang memastikan setiap bibit mendapat
-              air dalam jumlah yang tepat sesuai dengan kebutuhan
-              pertumbuhannya.
+              Pemeliharaan bibit dilakukan secara manual dengan pemantauan dan
+              pengelolaan intensif agar setiap tanaman mendapatkan perhatian
+              khusus sesuai kebutuhan.
+            </p>
+          </div>
+          <div class="card">
+            <span class="card-icon">💡</span>
+            <h3>Pencahayaan Teratur</h3>
+            <p>
+              Menggunakan pencahayaan alami dan tambahan secara teratur untuk
+              memastikan bibit mendapatkan intensitas cahaya yang cukup untuk
+              tumbuh optimal.
             </p>
           </div>
         </div>
@@ -713,10 +858,10 @@
         <h2 class="section-title">Proses Pembibitan</h2>
         <div class="divider"></div>
         <p class="section-subtitle">
-          Tahapan lengkap pembibitan cabai menggunakan sistem tray semai modern
+          Tahapan lengkap pembibitan cabai menggunakan sistem tray semai
         </p>
 
-        <div class="cards-grid">
+        <div class="cards-grids">
           <div class="card">
             <span class="card-icon">1️⃣</span>
             <h3>Persiapan Benih</h3>
@@ -772,7 +917,7 @@
     </section>
 
     <!-- Dokumentasi Section -->
-    <section id="dokumentasi" class="section bg-red">
+    <!-- <section id="dokumentasi" class="section bg-red">
       <div class="container">
         <h2 class="section-title" style="color: white">
           Dokumentasi Pembibitan
@@ -782,7 +927,7 @@
           📸 Dokumentasi kegiatan pembibitan dengan sistem tray semai 📸
         </p>
 
-        <!-- <div class="cards-grid">
+        <div class="cards-grid">
           <div
             class="card"
             onclick="openImageModal('./images/dokumentasi-pembibitan-1.jpg', 'Persiapan Tray Semai', 'Proses persiapan tray semai dengan media tanam steril untuk pembibitan cabai berkualitas tinggi')"
@@ -908,18 +1053,18 @@
             <h3 style="color: #7f1d1d">Tim Pembibitan</h3>
             <p>Tim mahasiswa KKN pengelola pembibitan</p>
           </div>
-        </div> -->
+        </div>
 
-        <!-- <div style="text-align: center; margin-top: 3rem">
+        <div style="text-align: center; margin-top: 3rem">
             <button
               class="btn"
               style="background: white; color: #dc2626; border: 2px solid white"
             >
               📷 Lihat Dokumentasi Lengkap
             </button>
-          </div> -->
+          </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- Tips Section -->
     <section id="tips" class="section">
@@ -935,7 +1080,7 @@
             <span class="card-icon">💡</span>
             <h3>Pemilihan Benih</h3>
             <p>
-              Pilih benih cabai yang bersertifikat, tidak keriput, dan memiliki
+              Pilih benih cabai yang berkualitas, tidak keriput, dan memiliki
               daya kecambah tinggi. Lakukan uji apung untuk memastikan kualitas
               benih.
             </p>
@@ -944,8 +1089,8 @@
             <span class="card-icon">🌡️</span>
             <h3>Suhu Optimal</h3>
             <p>
-              Jaga suhu rumah pembibitan antara 25-30°C dengan kelembaban 70-80%
-              untuk pertumbuhan bibit yang optimal.
+              Jaga suhu tempat pembibitan antara 25-30°C dengan kelembaban
+              70-80% untuk pertumbuhan bibit yang optimal.
             </p>
           </div>
           <div class="card">
@@ -954,6 +1099,15 @@
             <p>
               Siram bibit secara teratur dengan air bersih, hindari genangan air
               yang dapat menyebabkan pembusukan akar.
+            </p>
+          </div>
+          <div class="card">
+            <span class="card-icon">🧑‍🌾</span>
+            <h3>Perawatan Rutin</h3>
+            <p>
+              Lakukan pemantauan dan perawatan rutin seperti penyiangan,
+              pengendalian hama secara manual, dan pemupukan sesuai kebutuhan
+              bibit.
             </p>
           </div>
         </div>
@@ -965,9 +1119,9 @@
       <div class="container">
         <div class="footer-grid">
           <div class="footer-section">
-            <h3>Rumah Pembibitan Kebonagung</h3>
+            <h3>Pembibitan Cabai Kebonagung</h3>
             <p>
-              Program multidisiplin KKN Universitas Diponegoro untuk
+              Program Multidisiplin 2 KKN Universitas Diponegoro untuk
               pengembangan pertanian berkelanjutan di Desa Kebonagung.
             </p>
           </div>
@@ -1055,9 +1209,9 @@
         document.body.style.overflow = "auto";
       }
 
-      function openImageModal(imageSrc, title, description) {
-        openModal("Dokumentasi Pembibitan", title, description, imageSrc);
-      }
+      // function openImageModal(imageSrc, title, description) {
+      //   openModal("Dokumentasi Pembibitan", title, description, imageSrc);
+      // }
 
       // Close modal when clicking outside
       window.onclick = function (event) {
