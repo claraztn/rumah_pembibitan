@@ -83,14 +83,17 @@
         }
       }
 
-      /* Floating Decorations
+      /* Floating Decorations */
       .floating-decor {
         position: fixed;
         font-size: 2rem;
         opacity: 0.5;
         animation: float 15s ease-in-out infinite;
-        z-index: -1;
+        z-index: 0; /* pastikan floating di bawah badge */
         pointer-events: none;
+        /* opsional atur posisi supaya jauh dari hero-badge */
+        top: 50px; /* sesuaikan dengan posisi hero */
+        left: 20px; /* contoh posisi */
       }
 
       @keyframes float {
@@ -98,18 +101,18 @@
           transform: translateY(0) rotate(0deg);
         }
         25% {
-          transform: translateY(-30px) rotate(15deg);
+          transform: translateY(-5px) rotate(5deg);
         }
         50% {
-          transform: translateY(0) rotate(30deg);
+          transform: translateY(0) rotate(10deg);
         }
         75% {
-          transform: translateY(30px) rotate(15deg);
+          transform: translateY(5px) rotate(5deg);
         }
         100% {
           transform: translateY(0) rotate(0deg);
         }
-      } */
+      }
 
       /* Header Styles */
       header {
@@ -146,7 +149,7 @@
       }
 
       .logo-text h1 {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
         font-weight: bold;
       }
 
@@ -195,11 +198,11 @@
       .hero::before {
         content: "🌱";
         position: absolute;
-        top: 20px;
+        top: 1px;
         left: 20px;
-        font-size: 3rem;
+        font-size: 2.5rem;
         opacity: 1;
-        animation: float 6s ease-in-out infinite;
+        animation: float 8s ease-in-out infinite;
       }
 
       .hero::after {
@@ -212,6 +215,27 @@
         animation: float 8s ease-in-out infinite reverse;
       }
 
+      .hero .decor {
+        position: absolute;
+        opacity: 1;
+        pointer-events: none;
+        user-select: none;
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .hero .decor.top-right {
+        top: 1px;
+        right: 20px;
+        font-size: 2.5rem;
+      }
+
+      .hero .decor.bottom-left {
+        bottom: 20px;
+        left: 20px;
+        font-size: 2rem;
+        animation: float 8s ease-in-out infinite reverse;
+      }
+
       .hero-badge {
         background: linear-gradient(to right, #16a34a, #22c55e);
         color: white;
@@ -219,7 +243,7 @@
         border-radius: 25px;
         display: inline-block;
         margin-bottom: 1rem;
-        font-size: 1.2rem;
+        font-size: 1rem;
         font-weight: 500;
       }
 
@@ -228,9 +252,9 @@
         padding: 6px 10px;
         border-radius: 20px;
         display: inline-block;
-        margin-bottom: 1rem;
+        margin-bottom: 0.7rem;
         font-size: 1rem;
-        font-weight: 400;
+        font-weight: 500;
         font-style: italic;
         /* background: rgba(255, 255, 255, 0.7); */
         backdrop-filter: blur(10px);
@@ -239,7 +263,7 @@
       }
 
       .hero h1 {
-        font-size: clamp(3rem, 8vw, 4rem);
+        font-size: clamp(5rem, 8vw, 4rem);
         font-weight: 900;
         background: linear-gradient(135deg, #166534, #16a34a, #22c55e);
         -webkit-background-clip: text;
@@ -251,7 +275,7 @@
       }
 
       .hero h2 {
-        font-size: clamp(1.8rem, 5vw, 2.5rem);
+        font-size: 2.5rem;
         color: #16a34a;
         margin-bottom: 1rem;
         font-style: italic;
@@ -667,7 +691,7 @@
         }
 
         .hero {
-          padding: 80px 0;
+          padding: 50px 0;
         }
 
         .section {
@@ -722,8 +746,9 @@
         }
 
         .cards-grid {
-          grid-template-columns: 1fr;
-          gap: 20px;
+          grid-template-columns: repeat(2, 1fr); /* 2 kolom di HP */
+          gap: 10px; /* jarak antar kartu lebih kecil di HP */
+          padding: 10px;
         }
 
         .modal-content {
@@ -1037,12 +1062,22 @@
 
       @media (max-width: 480px) {
         .hero-badge {
-          font-size: 2rem;
-          padding: 6px 16px;
+          font-size: 1rem; /* kecilkan font supaya muat */
+          padding: 6px 12px;
+          white-space: nowrap; /* supaya teks tetap 1 baris */
+          overflow-x: auto; /* jika terlalu panjang, bisa di-scroll horizontal */
+          display: inline-block; /* supaya lebarnya sesuai isi */
+          max-width: 100%; /* jangan lebih dari container */
+        }
+
+        .hero-author {
+          font-size: 0.9rem;
+          padding: 4px 10px;
+          white-space: normal; /* ini bisa wrap jika perlu */
         }
 
         .location-badge {
-          font-size: 0.9rem;
+          font-size: 0.8rem;
           padding: 10px 20px;
         }
 
@@ -1053,11 +1088,55 @@
 
         .plant-card,
         .card {
-          padding: 5px;
+          padding: 2px;
         }
 
         .location-info {
           padding: 25px;
+        }
+
+        .logo {
+          flex-direction: column;
+          align-items: center; /* biar tulisan dan gambar tengah */
+          gap: 8px; /* jarak antar elemen */
+        }
+
+        .logo img {
+          width: 60px; /* kamu bisa atur ulang ukuran kalau mau */
+          height: 60px;
+        }
+
+        .plants-grid {
+          grid-template-columns: repeat(2, 1fr); /* 2 kolom */
+          gap: 3px; /* jarak antar kartu sedikit lebih kecil */
+        }
+
+        .plant-card img {
+          height: 120px; /* biar nggak terlalu tinggi di layar kecil */
+          padding: 5px; /* lebih rapat */
+        }
+
+        .cards-grid {
+          grid-template-columns: repeat(2, 1fr); /* 2 kolom di HP */
+          gap: 10px; /* jarak antar kartu lebih kecil di HP */
+          padding: 10px;
+        }
+
+        .card {
+          font-size: 0.9rem; /* sedikit kecil supaya muat */
+          padding: 8px;
+        }
+
+        .hero h1 {
+          font-size: clamp(3rem, 8vw, 4rem);
+          font-weight: 900;
+          background: linear-gradient(135deg, #166534, #16a34a, #22c55e);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          margin-bottom: 0.5rem;
+          text-transform: uppercase;
+          letter-spacing: -2px;
         }
       }
 
@@ -1081,15 +1160,6 @@
     </style>
   </head>
   <body>
-    <!-- Floating Decorations -->
-    <!-- <div class="floating-decor" style="top: 10%; left: 5%">🌸</div>
-    <div class="floating-decor" style="top: 20%; right: 10%">🌺</div>
-    <div class="floating-decor" style="bottom: 30%; left: 8%">🌻</div>
-    <div class="floating-decor" style="bottom: 15%; right: 5%">🌷</div>
-    <div class="floating-decor" style="top: 60%; left: 15%">🌼</div>
-    <div class="floating-decor" style="top: 40%; right: 20%">🌹</div> -->
-
-    <!-- Header -->
     <header>
       <div class="container">
         <div class="header-content">
@@ -1121,15 +1191,15 @@
 
     <!-- Hero Section -->
     <section class="hero">
+      <span class="decor top-right">🌱</span>
+      <span class="decor bottom-left">🍃</span>
       <div class="container">
-        <div class="hero-badge">
-          🌿 PROGRAM MULTIDISIPLIN 1 KKN UNDIP 2025 🌿
-        </div>
+        <div class="hero-badge">🌿 PROGRAM MULTIDISIPLIN 1 🌿</div>
         <br />
         <div class="hero-author">
           by: Clara Zita Nabilla - Informatika - 2022
         </div>
-        <h1>Greenhouse Terintegrasi</h1>
+        <h1>Greenhouse</h1>
         <div class="location-badge">
           Ds. Kebonagung, Kec. Tegowanu, Kab. Grobogan
         </div>
@@ -1173,23 +1243,6 @@
         </p>
 
         <div class="location-grid">
-          <div>
-            <div class="location-info">
-              <p
-                style="margin-bottom: 25px; font-size: 1.1rem; line-height: 1.8"
-              >
-                Greenhouse atau rumah kaca adalah suatu bangunan atau struktur
-                yang dirancang dengan dinding dan atap transparan (biasanya dari
-                kaca atau plastik) untuk menanam tanaman dalam kondisi
-                lingkungan yang terkendali.
-              </p>
-              <p style="font-size: 1.1rem; line-height: 1.8">
-                Greenhouse memanfaatkan panas dari sinar matahari untuk
-                menciptakan iklim mikro yang mendukung pertumbuhan tanaman,
-                terutama di luar musim atau di daerah dengan iklim ekstrem.
-              </p>
-            </div>
-          </div>
           <div style="text-align: center">
             <div
               style="
@@ -1209,6 +1262,23 @@
               </p>
             </div>
           </div>
+          <div>
+            <div class="location-info">
+              <p
+                style="margin-bottom: 25px; font-size: 1.1rem; line-height: 1.8"
+              >
+                Greenhouse atau rumah kaca adalah suatu bangunan atau struktur
+                yang dirancang dengan dinding dan atap transparan (biasanya dari
+                kaca atau plastik) untuk menanam tanaman dalam kondisi
+                lingkungan yang terkendali.
+              </p>
+              <p style="font-size: 1.1rem; line-height: 1.8">
+                Greenhouse memanfaatkan panas dari sinar matahari untuk
+                menciptakan iklim mikro yang mendukung pertumbuhan tanaman,
+                terutama di luar musim atau di daerah dengan iklim ekstrem.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1216,13 +1286,42 @@
     <!-- Objectives Section -->
     <section id="objectives" class="section bg-gray bg-pattern">
       <div class="container">
-        <h2 class="section-title">Tujuan Greenhouse</h2>
+        <h2 class="section-title">Tujuan Pembuatan Greenhouse</h2>
         <div class="divider"></div>
         <p class="section-subtitle">
-          Greenhouse dirancang dengan tujuan khusus untuk menciptakan lingkungan
-          pertanian yang optimal
+          Greenhouse dibuat untuk mendukung kegiatan pertanian yang bermanfaat
+          bagi kelompok tani dan ibu-ibu PKK.
         </p>
+        <div class="cards-grid">
+          <div class="card">
+            <span class="card-icon">🌿</span>
+            <h3>Mendukung Ketahanan Pangan</h3>
+            <p>
+              Menyediakan lingkungan yang mendukung produksi tanaman secara
+              optimal agar hasil panen lebih maksimal.
+            </p>
+          </div>
+          <div class="card">
+            <span class="card-icon">🤝</span>
+            <h3>Memberdayakan Masyarakat</h3>
+            <p>
+              Memberikan sarana praktis bagi kelompok tani dan ibu-ibu PKK untuk
+              belajar dan berpartisipasi dalam budidaya tanaman.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- Benefits Section -->
+    <section id="benefits" class="section">
+      <div class="container">
+        <h2 class="section-title">Manfaat Greenhouse</h2>
+        <div class="divider"></div>
+        <p class="section-subtitle">
+          Greenhouse memberikan berbagai keuntungan untuk pertanian modern dan
+          berkelanjutan
+        </p>
         <div class="cards-grid">
           <div class="card">
             <span class="card-icon">🌡️</span>
@@ -1265,50 +1364,11 @@
             </p>
           </div>
           <div class="card">
-            <span class="card-icon">🎯</span>
-            <h3>Efisiensi Sumber Daya</h3>
+            <span class="card-icon">💡</span>
+            <h3>Penghematan Energi</h3>
             <p>
-              Mengoptimalkan penggunaan air, nutrisi, dan energi untuk mencapai
-              hasil panen yang maksimal dengan input minimal.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Benefits Section -->
-    <section id="benefits" class="section">
-      <div class="container">
-        <h2 class="section-title">Manfaat Greenhouse</h2>
-        <div class="divider"></div>
-        <p class="section-subtitle">
-          Greenhouse memberikan berbagai keuntungan untuk pertanian modern dan
-          berkelanjutan
-        </p>
-
-        <div class="cards-grid">
-          <div class="card">
-            <span class="card-icon">📈</span>
-            <h3>Produktivitas Tinggi</h3>
-            <p>
-              Tanaman dapat tumbuh lebih cepat dan menghasilkan panen yang lebih
-              banyak dengan kualitas yang konsisten.
-            </p>
-          </div>
-          <div class="card">
-            <span class="card-icon">🌱</span>
-            <h3>Penanaman Sepanjang Tahun</h3>
-            <p>
-              Tidak tergantung musim, cocok untuk produksi yang terus-menerus
-              dan stabil sepanjang tahun.
-            </p>
-          </div>
-          <div class="card">
-            <span class="card-icon">🛡️</span>
-            <h3>Ramah Lingkungan</h3>
-            <p>
-              Pengurangan penggunaan pestisida karena lingkungan lebih tertutup
-              dan hama lebih mudah dikendalikan.
+              Memanfaatkan pencahayaan alami dan isolasi yang baik untuk
+              mengurangi penggunaan energi listrik.
             </p>
           </div>
         </div>
@@ -1321,8 +1381,8 @@
         <h2 class="section-title">Dokumentasi Greenhouse</h2>
         <div class="divider"></div>
         <p class="section-subtitle">
-          📸 Lihat perkembangan dan aktivitas program greenhouse Desa Kebonagung
-          📸
+          Lihat perkembangan dan aktivitas pembangunan greenhouse Desa
+          Kebonagung
         </p>
         <!-- Carousel Container dengan Arrow Navigation -->
         <div class="documentation-carousel">
@@ -1599,7 +1659,7 @@
             style="background: white; color: #16a34a; border: 2px solid white"
             onclick="showGallery()"
           >
-            Lihat Lebih Banyak Foto
+            📸 Lihat Lebih Detail Foto 📸
           </button>
         </div>
       </div>
@@ -1609,7 +1669,7 @@
     <div id="galleryModal" class="modal">
       <div class="gallery-modal-content">
         <div class="gallery-modal-header">
-          <h2>📷 Galeri Foto Lengkap Greenhouse</h2>
+          <h2>Galeri Foto Lengkap Greenhouse</h2>
           <button class="modal-close" onclick="closeGalleryModal()">
             &times;
           </button>
@@ -1744,7 +1804,7 @@
               onclick="showFullImage('./images/pembangunan_kerangka.jpg', 'Pembangunan Kerangka Greenhouse')"
             >
               <img
-                src="./images/pembangunan_kerangka.jpg"
+                src="./images/pembangunan_kerangka.JPG"
                 alt="Pembangunan Kerangka Greenhouse"
               />
               <div class="gallery-overlay">
@@ -1878,7 +1938,7 @@
           <div class="footer-section">
             <h3>Greenhouse Kebonagung</h3>
             <p>
-              Program multidisiplin KKN Universitas Diponegoro untuk
+              Program Multidisiplin 1 KKN Universitas Diponegoro untuk
               pengembangan pertanian berkelanjutan di Desa Kebonagung.
             </p>
           </div>
